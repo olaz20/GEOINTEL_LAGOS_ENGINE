@@ -3,9 +3,10 @@
 # ================================
 __pycache__/
 *.py[cod]
+*$py.class
 *.pyo
 *.pyd
-*.py.class
+.python-version  # Pyenv version file
 
 # ================================
 # Virtual environments
@@ -14,61 +15,89 @@ __pycache__/
 venv/
 env/
 ENV/
+.envrc  # Direnv files
 
 # ================================
 # Poetry
 # ================================
+# Remove poetry.lock from gitignore — you SHOULD commit it!
+# poetry.lock  ← DELETE THIS LINE or comment it out
+
+# Keep these
 .poetry/
-poetry.lock
+__pypackages__/
 
 # ================================
 # Environment variables
 # ================================
 .env
-.env.*
+.env.local
+.env.*      # Covers .env.development, .env.production, etc.
 !.env.example
+!.env.sample
 
 # ================================
 # FastAPI / Uvicorn
 # ================================
 *.log
-uvicorn.log
+*.pid
 
 # ================================
 # Database
 # ================================
 *.sqlite3
 *.db
+*.sqlite
+instance/  # If using Flask-style instance folders
 
 # ================================
 # Migrations (Alembic)
 # ================================
-alembic/versions/*.pyc
+# Remove this line — it's unnecessary and potentially harmful
+# alembic/versions/*.pyc  ← DELETE THIS LINE
+
+# Better: ignore only compiled files in the entire alembic folder if needed
+alembic/__pycache__/
+alembic/*.pyc
+
+# BUT: You should commit all .py files in alembic/versions/
 
 # ================================
-# Caches & coverage
+# Testing & Coverage
 # ================================
-.cache/
-.mypy_cache/
-.pytest_cache/
 .coverage
+.coverage.*
+coverage.xml
 htmlcov/
+.pytest_cache/
+.tox/
+.coverage
 
 # ================================
-# IDEs & editors
+# Build / Dist
 # ================================
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ================================
+# Jupyter / IPython
+# ================================
+.ipynb_checkpoints/
+
+# ================================
+# Misc
+# ================================
+*.bak
+*.tmp
+*~
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
 .vscode/
 .idea/
 *.swp
 *.swo
-
-# ================================
-# OS files
-# ================================
-.DS_Store
-Thumbs.db
-
-# ================================
-# Docker
-# ================================
-docker-data/
+*.swn

@@ -1,8 +1,12 @@
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker, declarative_base
 from .config import settings
-from .security import initialize_default_admin
 
+Base = declarative_base()
+
+from models.common import Audit
+from models.user import User
+from models.notification import Notification
 
 SQLALCHEMY_DATABASE_URL = (
     f'postgresql+asyncpg://{settings.database_username}:{settings.database_password}'
@@ -19,11 +23,7 @@ AsyncSessionLocal = sessionmaker(
     expire_on_commit=False
 )
 
-Base = declarative_base()
-
-
 
 async def get_db():
     async with AsyncSessionLocal() as db:
-        await initialize_default_admin(db) 
         yield db

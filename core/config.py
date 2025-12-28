@@ -9,7 +9,8 @@ class Settings(BaseSettings):
 
     default_admin_email: str
     admin_password: str
-
+    
+    frontend_url : str
     class Config:
         env_file = ".env"
 settings = Settings()

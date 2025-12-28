@@ -1,7 +1,8 @@
 from sqlalchemy import Column, String, Boolean
 from sqlalchemy.dialects.postgresql import UUID
 import uuid
-from core.base import Base
+
+from core.database import Base
 from models.common import Audit
 
 class User(Base, Audit):
@@ -14,3 +15,4 @@ class User(Base, Audit):
     password = Column(String, nullable=False)
     is_verified = Column(Boolean, default=False)
     is_admin = Column(Boolean, default=False)
+    email_verification_token = Column(String, nullable=True)

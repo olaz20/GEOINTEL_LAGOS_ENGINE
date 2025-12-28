@@ -1,0 +1,8 @@
+Hello {{ user.first_name }},
+
+Welcome to GeoIntel!
+
+Please verify your email by clicking the link below:
+{{ verification_link }}
+
+If you did not create this account, ignore this message.
